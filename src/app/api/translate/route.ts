@@ -15,16 +15,22 @@ export async function POST(req: Request) {
 
     // যদি বাংলা টেক্সট দেওয়া হয়, আগে ইংরেজিতে কনভার্ট করব
     if (direction === "bn|en") {
-      const enResponse = await axios.get("https://api.mymemory.translated.net/get", {
-        params: { q: text, langpair: "bn|en" },
-      });
+      const enResponse = await axios.get(
+        "https://api.mymemory.translated.net/get",
+        {
+          params: { q: text, langpair: "bn|en" },
+        }
+      );
       englishText = enResponse.data.responseData.translatedText;
       translated = englishText; // যেহেতু বাংলা থেকে ইংরেজি, তাই translated হবে ইংরেজি
     } else {
       // যদি ইংরেজি দেওয়া হয়, বাংলা ট্রান্সলেট করব
-      const bnResponse = await axios.get("https://api.mymemory.translated.net/get", {
-        params: { q: text, langpair: "en|bn" },
-      });
+      const bnResponse = await axios.get(
+        "https://api.mymemory.translated.net/get",
+        {
+          params: { q: text, langpair: "en|bn" },
+        }
+      );
       translated = bnResponse.data.responseData.translatedText;
     }
 

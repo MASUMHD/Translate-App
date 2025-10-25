@@ -2,6 +2,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { FaCopy, FaCheck, FaBroom, FaExchangeAlt } from "react-icons/fa";
+import Link from "next/link";
 
 export default function Home() {
   const [text, setText] = useState("");
@@ -57,7 +58,7 @@ export default function Home() {
     <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-200 dark:from-gray-900 dark:to-gray-800 md:px-4">
       <div className="w-full max-w-4xl bg-white dark:bg-gray-900 shadow-2xl md:rounded-3xl p-8 border border-gray-200 dark:border-gray-700 transition-all">
         <h1 className="text-4xl font-extrabold text-center text-indigo-600 dark:text-indigo-400 mb-8 drop-shadow-md">
-          🌍 Translate App
+          🌍 Mr. Translate
         </h1>
 
         {/* Toggle language direction */}
@@ -67,7 +68,7 @@ export default function Home() {
           </span>
           <button
             onClick={toggleDirection}
-            className="flex items-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-1 rounded-full shadow-md transition-all"
+            className="flex items-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-1 rounded-full shadow-md transition-all cursor-pointer"
             title="Switch Translation Direction"
           >
             <FaExchangeAlt /> Switch
@@ -101,14 +102,14 @@ export default function Home() {
               <button
                 onClick={handleTranslate}
                 disabled={loading}
-                className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-lg transition-all disabled:opacity-70 text-lg shadow-md"
+                className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-lg transition-all disabled:opacity-70 text-lg shadow-md cursor-pointer"
               >
                 {loading ? "Translating..." : "Translate"}
               </button>
 
               <button
                 onClick={handleClear}
-                className="flex items-center justify-center gap-2 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-5 rounded-lg transition-all text-lg shadow-md"
+                className="flex items-center justify-center gap-2 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-5 rounded-lg transition-all text-lg shadow-md cursor-pointer"
                 title="Clear all text"
               >
                 <FaBroom />
@@ -135,7 +136,7 @@ export default function Home() {
                     <strong>Formatted:</strong>
                     <button
                       onClick={() => handleCopy("formatted")}
-                      className="text-indigo-500 hover:text-indigo-700 transition"
+                      className="text-indigo-500 hover:text-indigo-700 transition cursor-pointer"
                       title="Copy formatted text"
                     >
                       {copied.formatted ? (
@@ -154,7 +155,7 @@ export default function Home() {
                     <strong>Translated:</strong>
                     <button
                       onClick={() => handleCopy("translated")}
-                      className="text-indigo-500 hover:text-indigo-700 transition"
+                      className="text-indigo-500 hover:text-indigo-700 transition cursor-pointer"
                       title="Copy translated text"
                     >
                       {copied.translated ? (
@@ -175,10 +176,17 @@ export default function Home() {
       </div>
 
       <footer className="mt-10 mb-6 text-gray-600 dark:text-gray-400 text-sm text-center">
-        © {new Date().getFullYear()} Translate App by{" "}
-        <span className="font-semibold text-indigo-600 dark:text-indigo-400">
-          MD Masum Billah
-        </span>
+        © {new Date().getFullYear()} Mr. Translate by{" "}
+        <Link
+          href="https://portfolio-sand-eta-27.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cursor-pointer"
+        >
+          <span className="font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400">
+            MD Masum Billah
+          </span>
+        </Link>
       </footer>
     </main>
   );

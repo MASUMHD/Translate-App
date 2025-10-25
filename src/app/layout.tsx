@@ -13,8 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Translate",
+  title: "Mr. Translate",
   description: "Translate Application",
+  icons: {
+    icon: "/Mr_t.png",
+  },
 };
 
 export default function RootLayout({
